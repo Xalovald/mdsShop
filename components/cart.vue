@@ -3,8 +3,7 @@
 </template>
 
 <script setup>
-computed: {
-    
-}
+
+const addProduct = defineEmits(["addProduct"])
 
 </script>

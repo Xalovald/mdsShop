@@ -18,8 +18,8 @@
             </p>
           </div>
           <div class="flex justify-between text-sm font-medium text-gray-900 mt-2 content-end ">
+            <button class="bg-green-500 w-5" @click="addProduct"> + </button>  
             {{ product.price + "€" }} 
-            <button :product="product"> + </button>  
           </div>
         </div>
       </div>
@@ -27,13 +27,16 @@
   </template>
   
   <script setup>
-  defineEmits(['product'])
+
     defineProps({
       product: {
         type: Object,
         required: true
       }
     })
-  
+    const addProduct = defineEmits(["addProduct"])
+    function addProduct() {
+        addProduct("addProduct", this.product.value)
+      }
   </script>
   
