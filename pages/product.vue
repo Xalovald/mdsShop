@@ -19,6 +19,7 @@ defineEmits(['product'])
 definePageMeta({
     middleware: 'protector'
 })
+
 const products = ref([])
 const apiProducts = await fetch('https://fakestoreapi.com/products')
 products.value = await apiProducts.json()

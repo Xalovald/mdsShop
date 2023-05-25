@@ -34,7 +34,6 @@
         required: true
       }
     })
-    const addProduct = defineEmits(["addProduct"])
     function addProduct() {
         addProduct("addProduct", this.product.value)
       }
