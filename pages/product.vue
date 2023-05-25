@@ -1,33 +1,26 @@
 
 <template>
     <div>
-      <h1>product</h1>
+    <div>
+        <Navbar />
+    </div>
+        <div class="flex flex-wrap gap-10">
+            <ProductCard v-for="product in products" :key="product.title" :product="product" />
+        </div>
 
     </div>
-    
-    <ProductCard v-for="product in products" :product="product" :key="product.id" />
-    
     </template>
     
-<script>
-import ProductCard from '../components/ProductCard.vue'
+<script setup>
+import ProductCard from '../components/productCard.vue'
+import Navbar from '../components/Navbar.vue'
+components: { ProductCard, Navbar }
+defineEmits(['product'])
 definePageMeta({
-      middleware: 'protector'
-    })
-export default {
+    middleware: 'protector'
+})
+const products = ref([])
+const apiProducts = await fetch('https://fakestoreapi.com/products')
+products.value = await apiProducts.json()
 
-    
-    
-    methods: {
-         fetchProducts() {
-            const productsData =  fetch('https://fakestoreapi.com/products')
-            const { products } =  productsData.json()
-            this.products = products
-            this.loading = false
-        }
-    },
-}
-
-
-    </script>
-    
+</script> 
